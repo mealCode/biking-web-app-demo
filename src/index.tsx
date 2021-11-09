@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import {
-  createStore, applyMiddleware, compose, combineReducers,
-} from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
@@ -15,9 +13,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 declare global {
-    interface Window {
-      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-    }
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
 }
 
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -27,10 +25,7 @@ const rootReducer = combineReducers({
   pickedBikingRecord: pickBikingRecordReducer,
 });
 
-const store = createStore(
-  rootReducer,
-  storeEnhancers(applyMiddleware(thunk)),
-);
+const store = createStore(rootReducer, storeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
