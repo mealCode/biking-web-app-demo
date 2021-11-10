@@ -65,9 +65,17 @@ const BikingRecordsComponents = () => {
     }
   }, [dispatch]);
 
+  const onWatchStoreChanges = useCallback(() => {
+    setBikingRecords(bikingRecordsState);
+  }, [bikingRecordsState]);
+
   useEffect(() => {
     fetchBikingRecords();
   }, [fetchBikingRecords]);
+
+  useEffect(() => {
+    onWatchStoreChanges();
+  }, [onWatchStoreChanges]);
 
   const noRecordsYet = () => (
     <div className="text-gray-600 text-sm mt-4">You have no record created yet, why not create one?</div>
